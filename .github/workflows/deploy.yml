@@ -54,11 +54,3 @@ jobs:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
 
 
-    - name: Teams Notification
-      uses: jdcargile/ms-teams-notification@v1.3
-      with:
-        fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
-        github-token: ${{ github.token }}
-        ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI_DEV }}
-        notification-summary: App  Deployment is ${{ job.status }}
-      if: always()
